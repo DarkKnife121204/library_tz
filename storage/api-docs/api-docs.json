@@ -1,0 +1,1481 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "My Doc API",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/": {},
+        "/api/authors": {
+            "get": {
+                "tags": [
+                    "Authors"
+                ],
+                "summary": "Список",
+                "operationId": "be68aa64058e29169345590ef50213d8",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "integer",
+                                                        "example": 1
+                                                    },
+                                                    "name": {
+                                                        "type": "string",
+                                                        "example": "name"
+                                                    },
+                                                    "bio": {
+                                                        "type": "string",
+                                                        "example": "bio"
+                                                    },
+                                                    "created_at": {
+                                                        "type": "string",
+                                                        "format": "date",
+                                                        "example": "2024-11-24T14:38:49.000000Z"
+                                                    },
+                                                    "updated_at": {
+                                                        "type": "string",
+                                                        "format": "date",
+                                                        "example": "2024-11-24T14:38:49.000000Z"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Authors"
+                ],
+                "summary": "Создание",
+                "operationId": "bcab5786e00765bc5a28d96b6ec4f48b",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "allOf": [
+                                    {
+                                        "$ref": "#/components/schemas/AuthorStoreRequestSchema"
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "integer",
+                                                    "example": 1
+                                                },
+                                                "name": {
+                                                    "type": "string",
+                                                    "example": "name"
+                                                },
+                                                "bio": {
+                                                    "type": "string",
+                                                    "example": "bio"
+                                                },
+                                                "created_at": {
+                                                    "type": "string",
+                                                    "format": "date",
+                                                    "example": "2024-11-24T14:38:49.000000Z"
+                                                },
+                                                "updated_at": {
+                                                    "type": "string",
+                                                    "format": "date",
+                                                    "example": "2024-11-24T14:38:49.000000Z"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/authors/{author}": {
+            "get": {
+                "tags": [
+                    "Authors"
+                ],
+                "summary": "Просмотр",
+                "operationId": "13c2a81fa6f28d2b4c6f11b375c01258",
+                "parameters": [
+                    {
+                        "name": "author",
+                        "in": "path",
+                        "description": "ID автора",
+                        "required": true,
+                        "example": 1
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "integer",
+                                                    "example": 1
+                                                },
+                                                "name": {
+                                                    "type": "string",
+                                                    "example": "name"
+                                                },
+                                                "bio": {
+                                                    "type": "string",
+                                                    "example": "bio"
+                                                },
+                                                "created_at": {
+                                                    "type": "string",
+                                                    "format": "date",
+                                                    "example": "2024-11-24T14:38:49.000000Z"
+                                                },
+                                                "updated_at": {
+                                                    "type": "string",
+                                                    "format": "date",
+                                                    "example": "2024-11-24T14:38:49.000000Z"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Authors"
+                ],
+                "summary": "Удалить",
+                "operationId": "dd7ad00391cba1f67c97ca7cc2aca01c",
+                "parameters": [
+                    {
+                        "name": "destroy",
+                        "in": "path",
+                        "description": "ID автора",
+                        "required": true,
+                        "example": 1
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Author deleted successfully"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "Authors"
+                ],
+                "summary": "Обновление",
+                "operationId": "b96ef33e375a5e6260763a428a819b59",
+                "parameters": [
+                    {
+                        "name": "patсh",
+                        "in": "path",
+                        "description": "ID автора",
+                        "required": true,
+                        "example": 1
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "allOf": [
+                                    {
+                                        "$ref": "#/components/schemas/AuthorUpdateRequestSchema"
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "integer",
+                                                    "example": 1
+                                                },
+                                                "name": {
+                                                    "type": "string",
+                                                    "example": "name"
+                                                },
+                                                "bio": {
+                                                    "type": "string",
+                                                    "example": "bio"
+                                                },
+                                                "created_at": {
+                                                    "type": "string",
+                                                    "format": "date",
+                                                    "example": "2024-11-24T14:38:49.000000Z"
+                                                },
+                                                "updated_at": {
+                                                    "type": "string",
+                                                    "format": "date",
+                                                    "example": "2024-11-24T14:38:49.000000Z"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/api/authors/books/{author}": {
+            "get": {
+                "tags": [
+                    "Authors"
+                ],
+                "summary": "Книги автора",
+                "operationId": "a6b2b21b59aa38f821141b207fd9acd2",
+                "parameters": [
+                    {
+                        "name": "author",
+                        "in": "path",
+                        "description": "ID автора",
+                        "required": true,
+                        "example": 1
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "properties": {
+                                            "id": {
+                                                "type": "integer",
+                                                "example": 1
+                                            },
+                                            "title": {
+                                                "type": "string",
+                                                "example": "Some title"
+                                            },
+                                            "author_id": {
+                                                "type": "integer",
+                                                "example": 1
+                                            },
+                                            "published_at": {
+                                                "type": "string",
+                                                "format": "date",
+                                                "example": "2012-11-25"
+                                            },
+                                            "created_at": {
+                                                "type": "string",
+                                                "format": "date",
+                                                "example": "2024-11-24T14:38:49.000000Z"
+                                            },
+                                            "updated_at": {
+                                                "type": "string",
+                                                "format": "date",
+                                                "example": "2024-11-24T14:38:49.000000Z"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/api/books": {
+            "get": {
+                "tags": [
+                    "Books"
+                ],
+                "summary": "Список",
+                "operationId": "31bd209f731f96fbf72021f67a262472",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "integer",
+                                                        "example": 1
+                                                    },
+                                                    "title": {
+                                                        "type": "string",
+                                                        "example": "Some title"
+                                                    },
+                                                    "author_id": {
+                                                        "type": "integer",
+                                                        "example": 12
+                                                    },
+                                                    "published_at": {
+                                                        "type": "string",
+                                                        "format": "date",
+                                                        "example": "1994-09-03"
+                                                    },
+                                                    "created_at": {
+                                                        "type": "string",
+                                                        "format": "date",
+                                                        "example": "2024-11-24T14:38:49.000000Z"
+                                                    },
+                                                    "updated_at": {
+                                                        "type": "string",
+                                                        "format": "date",
+                                                        "example": "2024-11-24T14:38:49.000000Z"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Books"
+                ],
+                "summary": "Создание",
+                "operationId": "eaabd90067e93554d9eaa480d67aaae6",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "allOf": [
+                                    {
+                                        "$ref": "#/components/schemas/BookStoreRequestSchema"
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "integer",
+                                                    "example": 1
+                                                },
+                                                "title": {
+                                                    "type": "string",
+                                                    "example": "title"
+                                                },
+                                                "author_id": {
+                                                    "type": "integer",
+                                                    "example": 1
+                                                },
+                                                "published_at": {
+                                                    "type": "string",
+                                                    "format": "date",
+                                                    "example": "2024-12-12"
+                                                },
+                                                "created_at": {
+                                                    "type": "string",
+                                                    "format": "date",
+                                                    "example": "2024-11-24T14:38:49.000000Z"
+                                                },
+                                                "updated_at": {
+                                                    "type": "string",
+                                                    "format": "date",
+                                                    "example": "2024-11-24T14:38:49.000000Z"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/books/{books}": {
+            "get": {
+                "tags": [
+                    "Books"
+                ],
+                "summary": "Просмотр",
+                "operationId": "636fe794d50ae966f75b026770731206",
+                "parameters": [
+                    {
+                        "name": "book",
+                        "in": "path",
+                        "description": "ID книги",
+                        "required": true,
+                        "example": 1
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "integer",
+                                                    "example": 1
+                                                },
+                                                "title": {
+                                                    "type": "string",
+                                                    "example": "Some title"
+                                                },
+                                                "author_id": {
+                                                    "type": "integer",
+                                                    "example": 1
+                                                },
+                                                "published_at": {
+                                                    "type": "string",
+                                                    "format": "date",
+                                                    "example": "2024-12-12"
+                                                },
+                                                "created_at": {
+                                                    "type": "string",
+                                                    "format": "date",
+                                                    "example": "2024-11-24T14:38:49.000000Z"
+                                                },
+                                                "updated_at": {
+                                                    "type": "string",
+                                                    "format": "date",
+                                                    "example": "2024-11-24T14:38:49.000000Z"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Books"
+                ],
+                "summary": "Удалить",
+                "operationId": "06cb9f50f2f4b53391738b251a3fea51",
+                "parameters": [
+                    {
+                        "name": "destroy",
+                        "in": "path",
+                        "description": "ID книги",
+                        "required": true,
+                        "example": 1
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Book deleted successfully"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "Books"
+                ],
+                "summary": "Обновление",
+                "operationId": "c98516f41dd75bcd88a2c431e2049f27",
+                "parameters": [
+                    {
+                        "name": "patсh",
+                        "in": "path",
+                        "description": "ID книги",
+                        "required": true,
+                        "example": 1
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "allOf": [
+                                    {
+                                        "$ref": "#/components/schemas/BookUpdateRequestSchema"
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "integer",
+                                                    "example": 1
+                                                },
+                                                "title": {
+                                                    "type": "string",
+                                                    "example": "title"
+                                                },
+                                                "author_id": {
+                                                    "type": "integer",
+                                                    "example": 1
+                                                },
+                                                "published_at": {
+                                                    "type": "string",
+                                                    "format": "date",
+                                                    "example": "2024-12-12"
+                                                },
+                                                "created_at": {
+                                                    "type": "string",
+                                                    "format": "date",
+                                                    "example": "2024-11-24T14:38:49.000000Z"
+                                                },
+                                                "updated_at": {
+                                                    "type": "string",
+                                                    "format": "date",
+                                                    "example": "2024-11-24T14:38:49.000000Z"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/api/books/author/{books}": {
+            "get": {
+                "tags": [
+                    "Books"
+                ],
+                "summary": "Автор книги",
+                "operationId": "32adca6743927f476e416d8bee0e6070",
+                "parameters": [
+                    {
+                        "name": "Book",
+                        "in": "path",
+                        "description": "ID книги",
+                        "required": true,
+                        "example": 1
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "integer",
+                                            "example": 1
+                                        },
+                                        "name": {
+                                            "type": "string",
+                                            "example": "Some some name"
+                                        },
+                                        "bio": {
+                                            "type": "string",
+                                            "example": "Some some bio"
+                                        },
+                                        "created_at": {
+                                            "type": "string",
+                                            "format": "date",
+                                            "example": "2024-11-24T14:38:49.000000Z"
+                                        },
+                                        "updated_at": {
+                                            "type": "string",
+                                            "format": "date",
+                                            "example": "2024-11-24T14:38:49.000000Z"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/api/books/rentals/{book}": {
+            "get": {
+                "tags": [
+                    "Books"
+                ],
+                "summary": "Аренды книги",
+                "operationId": "26c41800d892c7d7a06399d62936b75f",
+                "parameters": [
+                    {
+                        "name": "Book",
+                        "in": "path",
+                        "description": "ID книги",
+                        "required": true,
+                        "example": 1
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "properties": {
+                                            "id": {
+                                                "type": "integer",
+                                                "example": 1
+                                            },
+                                            "user_id": {
+                                                "type": "integer",
+                                                "example": 2
+                                            },
+                                            "book_id": {
+                                                "type": "integer",
+                                                "example": 1
+                                            },
+                                            "rented_at": {
+                                                "type": "string",
+                                                "format": "date",
+                                                "example": "2024-11-21"
+                                            },
+                                            "due_date": {
+                                                "type": "string",
+                                                "format": "date",
+                                                "example": "2024-12-06"
+                                            },
+                                            "return_at": {
+                                                "type": "string",
+                                                "format": "date",
+                                                "example": null
+                                            },
+                                            "created_at": {
+                                                "type": "string",
+                                                "format": "date",
+                                                "example": "2024-11-24T14:38:49.000000Z"
+                                            },
+                                            "updated_at": {
+                                                "type": "string",
+                                                "format": "date",
+                                                "example": "2024-11-24T14:38:49.000000Z"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/api/books/users/{book}": {
+            "get": {
+                "tags": [
+                    "Books"
+                ],
+                "summary": "Пользователь книги",
+                "operationId": "8c87587fb43872d339a292eeb1c29d76",
+                "parameters": [
+                    {
+                        "name": "Book",
+                        "in": "path",
+                        "description": "ID книги",
+                        "required": true,
+                        "example": 1
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "properties": {
+                                            "id": {
+                                                "type": "integer",
+                                                "example": 1
+                                            },
+                                            "name": {
+                                                "type": "string",
+                                                "example": "Enid Trantow"
+                                            },
+                                            "email": {
+                                                "type": "string",
+                                                "example": "pbernhard@example.com"
+                                            },
+                                            "email_verified_at": {
+                                                "type": "string",
+                                                "format": "date",
+                                                "example": "2024-11-24T14:38:49.000000Z"
+                                            },
+                                            "created_at": {
+                                                "type": "string",
+                                                "format": "date",
+                                                "example": "2024-11-24T14:38:49.000000Z"
+                                            },
+                                            "updated_at": {
+                                                "type": "string",
+                                                "format": "date",
+                                                "example": "2024-11-24T14:38:49.000000Z"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/api/rentals": {
+            "get": {
+                "tags": [
+                    "Rentals"
+                ],
+                "summary": "Список",
+                "operationId": "a3f7d2092bd6c52f99481fcc9fc3d6f6",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "integer",
+                                                        "example": 1
+                                                    },
+                                                    "user_id": {
+                                                        "type": "integer",
+                                                        "example": 1
+                                                    },
+                                                    "book_id": {
+                                                        "type": "integer",
+                                                        "example": 1
+                                                    },
+                                                    "rented_at": {
+                                                        "type": "string",
+                                                        "format": "date",
+                                                        "example": "2024-11-24"
+                                                    },
+                                                    "due_date": {
+                                                        "type": "string",
+                                                        "format": "date",
+                                                        "example": "2024-11-30"
+                                                    },
+                                                    "return_at": {
+                                                        "type": "string",
+                                                        "format": "date",
+                                                        "example": "null"
+                                                    },
+                                                    "created_at": {
+                                                        "type": "string",
+                                                        "format": "date",
+                                                        "example": "2024-11-24T14:38:49.000000Z"
+                                                    },
+                                                    "updated_at": {
+                                                        "type": "string",
+                                                        "format": "date",
+                                                        "example": "2024-11-24T14:38:49.000000Z"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Rentals"
+                ],
+                "summary": "Создание",
+                "operationId": "b4a8c9b75e8dbe8042b7eaa38ec98bd9",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "allOf": [
+                                    {
+                                        "$ref": "#/components/schemas/RentalStoreRequestSchema"
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "integer",
+                                                    "example": 1
+                                                },
+                                                "user_id": {
+                                                    "type": "integer",
+                                                    "example": 1
+                                                },
+                                                "book_id": {
+                                                    "type": "integer",
+                                                    "example": 1
+                                                },
+                                                "rented_at": {
+                                                    "type": "string",
+                                                    "format": "date",
+                                                    "example": "2024-11-24"
+                                                },
+                                                "due_date": {
+                                                    "type": "string",
+                                                    "format": "date",
+                                                    "example": "2024-11-30"
+                                                },
+                                                "return_at": {
+                                                    "type": "string",
+                                                    "format": "date",
+                                                    "example": "null"
+                                                },
+                                                "created_at": {
+                                                    "type": "string",
+                                                    "format": "date",
+                                                    "example": "2024-11-24T14:38:49.000000Z"
+                                                },
+                                                "updated_at": {
+                                                    "type": "string",
+                                                    "format": "date",
+                                                    "example": "2024-11-24T14:38:49.000000Z"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/rentals/{rentals}": {
+            "patch": {
+                "tags": [
+                    "Rentals"
+                ],
+                "summary": "Обновление",
+                "operationId": "cbd0e3e21af032fe2516aa71a3319cce",
+                "parameters": [
+                    {
+                        "name": "patсh",
+                        "in": "path",
+                        "description": "ID аренды",
+                        "required": true,
+                        "example": 1
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "allOf": [
+                                    {
+                                        "$ref": "#/components/schemas/RentalUpdateRequestSchema"
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "integer",
+                                                    "example": 1
+                                                },
+                                                "user_id": {
+                                                    "type": "integer",
+                                                    "example": 1
+                                                },
+                                                "book_id": {
+                                                    "type": "integer",
+                                                    "example": 1
+                                                },
+                                                "rented_at": {
+                                                    "type": "string",
+                                                    "format": "date",
+                                                    "example": "2024-11-24"
+                                                },
+                                                "due_date": {
+                                                    "type": "string",
+                                                    "format": "date",
+                                                    "example": "2024-11-30"
+                                                },
+                                                "return_at": {
+                                                    "type": "string",
+                                                    "format": "date",
+                                                    "example": "null"
+                                                },
+                                                "created_at": {
+                                                    "type": "string",
+                                                    "format": "date",
+                                                    "example": "2024-11-24T14:38:49.000000Z"
+                                                },
+                                                "updated_at": {
+                                                    "type": "string",
+                                                    "format": "date",
+                                                    "example": "2024-11-24T14:38:49.000000Z"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/api/rentals/books/{rental}": {
+            "get": {
+                "tags": [
+                    "Rentals"
+                ],
+                "summary": "Книга из аренды",
+                "operationId": "d6bd8f81f1dee30f17be1106587dfdd9",
+                "parameters": [
+                    {
+                        "name": "author",
+                        "in": "path",
+                        "description": "ID аренды",
+                        "required": true,
+                        "example": 1
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "integer",
+                                            "example": 1
+                                        },
+                                        "title": {
+                                            "type": "string",
+                                            "example": "Some title"
+                                        },
+                                        "author_id": {
+                                            "type": "integer",
+                                            "example": 1
+                                        },
+                                        "published_at": {
+                                            "type": "string",
+                                            "format": "date",
+                                            "example": "2012-11-25"
+                                        },
+                                        "created_at": {
+                                            "type": "string",
+                                            "format": "date",
+                                            "example": "2024-11-24T14:38:49.000000Z"
+                                        },
+                                        "updated_at": {
+                                            "type": "string",
+                                            "format": "date",
+                                            "example": "2024-11-24T14:38:49.000000Z"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/api/user/books/{user}": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Книга арендованная пользователем",
+                "operationId": "01cadccce502f31b6decbc228adf0cdf",
+                "parameters": [
+                    {
+                        "name": "user",
+                        "in": "path",
+                        "description": "ID пользователя",
+                        "required": true,
+                        "example": 1
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "integer",
+                                            "example": 1
+                                        },
+                                        "title": {
+                                            "type": "string",
+                                            "example": "Some title"
+                                        },
+                                        "author_id": {
+                                            "type": "integer",
+                                            "example": 1
+                                        },
+                                        "published_at": {
+                                            "type": "string",
+                                            "format": "date",
+                                            "example": "2012-11-25"
+                                        },
+                                        "created_at": {
+                                            "type": "string",
+                                            "format": "date",
+                                            "example": "2024-11-24T14:38:49.000000Z"
+                                        },
+                                        "updated_at": {
+                                            "type": "string",
+                                            "format": "date",
+                                            "example": "2024-11-24T14:38:49.000000Z"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "AuthorStoreRequestSchema": {
+                "required": [
+                    "name",
+                    "bio"
+                ],
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "example": "name"
+                    },
+                    "bio": {
+                        "type": "string",
+                        "example": "bio"
+                    }
+                },
+                "type": "object"
+            },
+            "AuthorUpdateRequestSchema": {
+                "required": [
+                    "name",
+                    "bio"
+                ],
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "example": "name"
+                    },
+                    "bio": {
+                        "type": "string",
+                        "example": "bio"
+                    }
+                },
+                "type": "object"
+            },
+            "BookStoreRequestSchema": {
+                "required": [
+                    "name",
+                    "bio",
+                    "published_at"
+                ],
+                "properties": {
+                    "title": {
+                        "type": "string",
+                        "example": "title"
+                    },
+                    "author_id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "published_at": {
+                        "type": "string",
+                        "example": "2024-11-24"
+                    }
+                },
+                "type": "object"
+            },
+            "BookUpdateRequestSchema": {
+                "required": [
+                    "name",
+                    "bio",
+                    "published_at"
+                ],
+                "properties": {
+                    "title": {
+                        "type": "string",
+                        "example": "title"
+                    },
+                    "author_id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "published_at": {
+                        "type": "string",
+                        "example": "2024-11-24"
+                    }
+                },
+                "type": "object"
+            },
+            "RentalStoreRequestSchema": {
+                "required": [
+                    "user_id",
+                    "book_id",
+                    "rented_at",
+                    "due_date"
+                ],
+                "properties": {
+                    "user_id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "book_id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "rented_at": {
+                        "type": "string",
+                        "example": "2024-11-24"
+                    },
+                    "due_date": {
+                        "type": "string",
+                        "example": "2024-11-30"
+                    }
+                },
+                "type": "object"
+            },
+            "RentalUpdateRequestSchema": {
+                "required": [
+                    "return_at"
+                ],
+                "properties": {
+                    "return_at": {
+                        "type": "string",
+                        "example": "null"
+                    }
+                },
+                "type": "object"
+            },
+            "AuthorResourceSchema": {
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "name": {
+                        "type": "string",
+                        "example": "name"
+                    },
+                    "bio": {
+                        "type": "string",
+                        "example": "bio"
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "example": "2024-11-24T14:38:49.000000Z"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "example": "2024-11-24T14:38:49.000000Z"
+                    }
+                },
+                "type": "object"
+            },
+            "BookResourceSchema": {
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "title": {
+                        "type": "string",
+                        "example": "title"
+                    },
+                    "author_id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "published_at": {
+                        "type": "string",
+                        "example": "2024-11-24"
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "example": "2024-11-24T14:38:49.000000Z"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "example": "2024-11-24T14:38:49.000000Z"
+                    }
+                },
+                "type": "object"
+            },
+            "RentalResourceSchema": {
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "user_id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "book_id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "rented_at": {
+                        "type": "string",
+                        "example": "2024-12-06"
+                    },
+                    "due_date": {
+                        "type": "string",
+                        "example": "2024-12-12"
+                    },
+                    "return_at": {
+                        "type": "string",
+                        "example": "null"
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "example": "2024-11-24T14:38:49.000000Z"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "example": "2024-11-24T14:38:49.000000Z"
+                    }
+                },
+                "type": "object"
+            },
+            "UserResourceSchema": {
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "name": {
+                        "type": "string",
+                        "example": "name"
+                    },
+                    "email": {
+                        "type": "string",
+                        "example": "email"
+                    },
+                    "email_verified_at": {
+                        "type": "string",
+                        "example": "email_verified_at"
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "example": "2024-11-24T14:38:49.000000Z"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "example": "2024-11-24T14:38:49.000000Z"
+                    }
+                },
+                "type": "object"
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Authors",
+            "description": "Authors"
+        },
+        {
+            "name": "Books",
+            "description": "Books"
+        },
+        {
+            "name": "Rentals",
+            "description": "Rentals"
+        },
+        {
+            "name": "User",
+            "description": "User"
+        }
+    ]
+}
