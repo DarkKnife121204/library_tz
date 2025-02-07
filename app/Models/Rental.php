@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Rental extends Model
 {
@@ -17,9 +18,14 @@ class Rental extends Model
         'due_date',
         'return_at',
     ];
-    public function book()
+    public function book(): BelongsTo
     {
         return $this->belongsTo(Book::class);
+    }
+
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
     }
 
 }

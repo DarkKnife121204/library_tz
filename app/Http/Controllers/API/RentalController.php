@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\RentalStoreRequest;
 use App\Http\Requests\RentalUpdateRequest;
 use App\Http\Resources\RentalResource;
+use App\Jobs\ProcessReturn;
 use App\Models\Rental;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
@@ -148,6 +149,7 @@ class RentalController extends Controller
     {
         $validated = $request->validated();
         $rental = Rental::create($validated);
+        ProcessReturn::dispatch($rental)->delay(20);
         return new RentalResource($rental);
     }
 

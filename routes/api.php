@@ -11,20 +11,21 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
 
-Route::resource('authors', AuthorController::class);
-// test
-Route::get('authors/books/{author}',[AuthorController::class,'books']);
+Route::resource('authors', AuthorController::class)->names('authors');
 
-Route::resource('books', BookController::class);
+Route::get('authors/books/{author}',[AuthorController::class,'books'])->name('authors.books');
 
-Route::get('books/author/{book}',[BookController::class,'author']);
+Route::resource('books', BookController::class)->names('books');
 
-Route::get('books/rentals/{book}',[BookController::class,'rentals']);
+Route::get('books/author/{book}',[BookController::class,'author'])->name('books.author');
 
-Route::get('books/users/{book}',[BookController::class,'users']);
+Route::get('books/rentals/{book}',[BookController::class,'rentals'])->name('books.rentals');
 
-Route::resource('rentals', RentalController::class);
+Route::get('books/users/{book}',[BookController::class,'users'])->name('books.users');
 
-Route::get('rentals/books/{rental}',[RentalController::class,'book']);
+Route::resource('rentals', RentalController::class)->names('rentals');
 
-Route::get('user/books/{user}',[UserController::class,'books']);
+Route::get('rentals/books/{rental}',[RentalController::class,'book'])->name('rentals.book');
+
+Route::get('user/books/{user}',[UserController::class,'books'])->name('user.books');
+
