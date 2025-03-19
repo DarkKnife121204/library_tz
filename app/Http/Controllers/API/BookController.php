@@ -264,8 +264,8 @@ class BookController extends Controller
     public function store(BookStoreRequest $request): BookResource
     {
         $validated = $request->validated();
-        $author = Book::create($validated);
-        return new BookResource($author);
+        $book = Book::create($validated);
+        return new BookResource($book);
     }
 
     public function update(BookUpdateRequest $request, Book $book): BookResource

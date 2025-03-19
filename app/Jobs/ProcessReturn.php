@@ -20,7 +20,7 @@ class ProcessReturn implements ShouldQueue
 
     public function handle(): void
     {
-        if ($this->rental->return_at==null)
+        if (is_null($this->rental->return_at))
         {
             $user = $this->rental->user;
             $mailData = [
