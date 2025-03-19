@@ -12,6 +12,7 @@
 
 ```bash
     composer i
+    npm run dev
     vendor/bin/sail build
     vendor/bin/sail up -d
     vendor/bin/sail artisan key:generate
